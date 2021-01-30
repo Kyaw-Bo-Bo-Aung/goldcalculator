@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>gold calculator</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	<style type="text/css">
+		#total{
+			background-color: #b0ffb0;
+		}
+		#kyat, #pe, #ywae{
+			background-color: #faffc2;
+		}
+		body,html{
+			position: relative;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			background: url("https://cdn.corporatefinanceinstitute.com/assets/gold-standard.jpeg") no-repeat fixed center;
+		}
+		label{
+			color: #ffffff;
+		}
+	</style>
+</head>
+<body>
+	
+
+		<div class="container w-50 mx-auto py-5">
+			
+			<h1 class="text-center pb-5 text-white">Gold Calculator</h1>
+			<label>Gram:</label>
+			<input type="number" name="gram" id="gram" class="form-control"> <br>
+			<label>Price/Kyat:</label>
+			<input type="number" name="price" id="price" class="form-control" value="1100000"> <br>
+			<button onclick="calculate()" class="btn btn-primary">Calculate</button>
+			<hr>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label>Kyat:</label>
+						<input type="number" name="kyat" id="kyat" readonly="" class="form-control">
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label>Pe:</label>
+						<input type="number" name="pe" id="pe" readonly="" class="form-control">
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label>Ywae:</label>
+						<input type="number" name="ywae" id="ywae" readonly="" class="form-control">
+					</div>
+				</div>
+			</div>
+			
+			<label>Total cost:</label>
+			<div class="input-group">
+					<input type="number" name="total" id="total" readonly="" class="form-control">
+		  		<div class="input-group-append">
+				    <span class="input-group-text">Kyats</span>
+				</div>
+			</div>			
+		</div>
+
+		
+
+
+<script type="text/javascript" src="bootstrap/js/jquery.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+<script type="text/javascript">
+	function calculate () {
+		var gram = document.getElementById("gram").value;
+		var kyat = document.getElementById('kyat');
+		var pe = document.getElementById('pe');
+		var ywae = document.getElementById('ywae');
+		var total = document.getElementById("total");
+		var price = document.getElementById("price").value;
+		
+	//to kyat
+		// var kk = parseInt(gram/16.6)
+		var k = gram/16.6; 		//formula
+		var k1 = parseInt(k); 	//kyat amout
+	//to pe
+		// var pp = parseInt(((k-parseInt(k)).toFixed(10))*16);
+		var p = k - parseInt(k);
+		var p1 = p.toFixed(5);
+		var p2 = p1*16;			//formula
+		var p3 = parseInt(p2); 	// pe amout
+	//to ywae
+		// var yy = parseInt(((p2-parseInt(p2)).toFixed(10))*8);
+		var y = p2 - parseInt(p2);
+		var y1 = y.toFixed(5);
+		var y2 = y1*8;			//formula
+		var y3 = parseInt(y2); 	//ywae amout
+	//total
+		// var tt = (kk+pp/16+yy/128)*1100000;
+		var t = (k1 + p3/16 + y3/128)*price;
+
+		// kyat.value = kk;	
+		// pe.value = pp;
+		// ywae.value = yy;
+		// total.value = tt ;
+
+		kyat.value = k1;	
+		pe.value = p3;
+		ywae.value = y3;
+		total.value = t;
+
+		// console.log(k);
+		// console.log(p1);
+		// console.log(p2);
+		// console.log(y1);
+		// console.log(y2);
+		// console.log(t);
+}
+
+</script>
+</body>
+</html>
